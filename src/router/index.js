@@ -19,6 +19,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
   },
+  {
+    path: "/sort",
+    name: "sort",
+    component: () =>
+      import("../views/SortTableView.vue"),
+  },
 ];
 
 const router = new VueRouter({
