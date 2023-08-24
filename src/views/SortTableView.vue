@@ -1,8 +1,10 @@
 <template>
   <div style="display: flex;justify-content: center;">
-    <el-table ref="mainTable" class="t1" :data="tableData" style="width: 50%" row-key="id" border stripe>
-      <el-table-column prop="id" label="id"></el-table-column>
-    </el-table>
+    <div style="height: 300px;width: 500px;">
+      <el-table ref="mainTable" height="100%" class="t1" :data="tableData" style="width: 50%" row-key="id" border stripe>
+        <el-table-column prop="id" label="id"></el-table-column>
+      </el-table>
+    </div>
   </div>
 </template>
 
@@ -12,23 +14,24 @@ export default {
   name: "SortTableView",
   data() {
     return {
-      tableData: [
-        { id: 1 },
-        { id: 2 },
-        { id: 3 },
-        { id: 4 },
-        { id: 5 },
-        { id: 6 },
-        { id: 7 },
-        { id: 8 },
-      ],
+      tableData: [],
     };
   },
   mounted() {
+    this.getTabelData();
     //调用拖拽行方法
     this.rowDrop();
   },
   methods: {
+    getTabelData() {
+      let tableData = []
+      for (let i = 1; i <= 30; i++) {
+        tableData.push({
+          id: i
+        })
+      }
+      this.tableData = tableData;
+    },
     //拖拽行方法
     rowDrop() {
       const tbody = document.querySelector(".t1 tbody");
